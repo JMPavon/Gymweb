@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #yo
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Tegucigalpa'
 
 USE_I18N = True
 

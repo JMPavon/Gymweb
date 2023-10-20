@@ -23,3 +23,16 @@ class Genero(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Evento(models.Model):
+    nombreEvento = models.CharField(max_length=100, verbose_name='Evento')
+    fechaInicio = models.DateTimeField(auto_now=False, auto_now_add=False, verbose_name='Inicio')
+    fechaFin = models.DateTimeField(auto_now=False, auto_now_add=False, verbose_name='Fin')
+
+    class meta:
+        verbose_name_plural='Eventos'
+        verbose_name="Evento"
+
+    def __str__(self):
+        return self.nombreEvento
