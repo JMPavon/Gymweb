@@ -4,6 +4,7 @@
 *.PNG
 media/
 media/photos/
+.idea/workspace.xml
 settings.py
 db.sqlite3
 #/db.sqlite3
