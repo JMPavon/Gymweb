@@ -10,7 +10,7 @@
 {% block contenido %}
 <div class="row">
   <div class="col-md-12">
-    <table class="table table-dark">
+    <table class="table">
       <thead>
         <tr>
           <th>DNI</th>
@@ -24,6 +24,9 @@
             <td>{{ cliente.dni }}</td>
             <td>{{ cliente.nombre }}</td>
             <td>{{ cliente.apellido }}</td>
+            <td>
+              <a href="{% url 'editar_cliente' cliente.dni %}">Edit</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>

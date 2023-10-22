@@ -25,4 +25,5 @@ urlpatterns = [
     path('', home, name="home"),
     path('clientes/', ListaClientes.as_view(), name="clientes"),
     path('clientes/agregar/', CrearCliente.as_view(), name="crear_cliente"),
+    path('clientes/editar/<slug:pk>/', EditarCliente.as_view(), name="editar_cliente"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
