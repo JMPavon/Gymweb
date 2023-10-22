@@ -5,7 +5,7 @@ from .models import *
 #yo
 
 class SucursalAdmin(admin.ModelAdmin):
-    list_display = ("id", "nombre", "email")
+    list_display = ("id", "nombre")
     search_fields = ("nombre",)
 
 class GeneroAdmin(admin.ModelAdmin):
