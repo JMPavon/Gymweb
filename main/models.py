@@ -57,3 +57,9 @@ class Cliente(models.Model):
     dni = models.CharField(max_length=13, primary_key=True)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
+
+
+class FormaPago(models.Model):
+    nombreFormaPago = models.CharField(max_length=50)
+    descripcion = models.TextField(null=True, blank=True)
+    esActivo = models.BooleanField(default=True)

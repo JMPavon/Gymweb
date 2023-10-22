@@ -22,4 +22,9 @@ class EventosAdmin(admin.ModelAdmin):
     search_fields = ("nombreEvento",)
 
 
-admin.site.register(CompaniaInfo)
+@admin.register(CompaniaInfo)
+class CompaniaInfoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombre', 'telefono', 'direccion', 'email')
+    search_fields = ('nombre',)
+
+
