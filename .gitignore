@@ -1,0 +1,9 @@
+*.pyc
+*.JPG
+*.JPEG
+*.PNG
+media/
+media/photos/
+settings.py
+db.sqlite3
+#/db.sqlite3
