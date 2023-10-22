@@ -26,6 +26,8 @@
             <td>{{ cliente.apellido }}</td>
             <td>
               <a href="{% url 'editar_cliente' cliente.dni %}">Edit</a>
+              <span>|</span>
+              <a href="{% url 'eliminar_cliente' cliente.dni %}">Eliminar</a>
             </td>
           </tr>
         {% endfor %}

@@ -4,8 +4,10 @@ from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 def home(request):
     ctx = {
@@ -45,7 +47,6 @@ class ListaClientes(ListView):
     context_object_name = "lista"
 
 
-
 # class CrearCliente(CreateView):
 #     model = Cliente
 #     form_class = FrmCliente
@@ -74,8 +75,6 @@ class ListaClientes(ListView):
 #         return ctx
 
 
-from django.views import View
-
 class Padre(View):
     model = Cliente
     form_class = FrmCliente
@@ -90,9 +89,26 @@ class Padre(View):
         ctx["titulo"] = self.titulo
         return ctx
 
+
 class CrearCliente(Padre, CreateView):
     titulo = "Crear"
 
 
 class EditarCliente(Padre, UpdateView):
     titulo = "Editar"
+
+
+class EliminarCliente(DeleteView):
+    model = Cliente
+    template_name = "eliminar_cliente.html"
+    success_url = reverse_lazy('clientes')
+
+    # def delete(self, request, *args, **kwargs):
+    #     """
+    #     Call the delete() method on the fetched object and then redirect to the
+    #     success URL.
+    #     """
+    #     self.object = self.get_object()
+    #     success_url = self.get_success_url()
+    #     # self.object.delete()
+    #     return HttpResponseRedirect(success_url)
