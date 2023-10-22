@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}CLIENTES{% endblock pagetitle %}
+
+{% block toolbar %}
+<a href="{% url 'crear_cliente' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-download fa-sm text-white-50"></i> Agregar Cliente</a>
+{% endblock toolbar %}
+
+{% block contenido %}
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>DNI</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cliente in lista %}
+          <tr>
+            <td>{{ cliente.dni }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock contenido %}

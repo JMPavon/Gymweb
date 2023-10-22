@@ -22,5 +22,4 @@ class EventosAdmin(admin.ModelAdmin):
     search_fields = ("nombreEvento",)
 
 
-
-
+admin.site.register(CompaniaInfo)

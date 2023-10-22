@@ -7,7 +7,7 @@ class CompaniaInfo(models.Model):
     telefono = models.CharField(max_length=10, null=True, blank=True)
     direccion = models.TextField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
-    urlLogo = models.TextField(null=True, blank=True)
+    urlLogo = models.ImageField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural='CompaniasInfo'
@@ -20,6 +20,7 @@ class Sucursal(models.Model):
     nombre = models.CharField(max_length=100)
     telefono = models.CharField(max_length=10, null=True, blank=True)
     direccion = models.TextField(null=True, blank=True)
+    company = models.ForeignKey(CompaniaInfo, on_delete=models.CASCADE)
 
 
     class Meta:
@@ -50,3 +51,9 @@ class Evento(models.Model):
 
     def __str__(self):
         return self.nombreEvento
+
+
+class Cliente(models.Model):
+    dni = models.CharField(max_length=13, primary_key=True)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
