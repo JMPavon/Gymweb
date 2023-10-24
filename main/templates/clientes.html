@@ -3,8 +3,8 @@
 {% block pagetitle %}CLIENTES{% endblock pagetitle %}
 
 {% block toolbar %}
-<a href="{% url 'crear_cliente' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-download fa-sm text-white-50"></i> Agregar Cliente</a>
+{# <a href="{% url 'crear_cliente' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Agregar Cliente</a> #}
+<button type="button" name="button" class="btn btn-primary" id="btnagregar">Agregar</button>
 {% endblock toolbar %}
 
 {% block contenido %}
@@ -27,7 +27,8 @@
             <td>
               <a href="{% url 'editar_cliente' cliente.dni %}">Edit</a>
               <span>|</span>
-              <a href="{% url 'eliminar_cliente' cliente.dni %}">Eliminar</a>
+              {# <a class="btneliminar" href="{% url 'eliminar_cliente' cliente.dni %}">Eliminar</a> #}
+              <button type="button" name="button" class="btn btn-danger btneliminar" id="{{ cliente.dni }}">Delete</button>
             </td>
           </tr>
         {% endfor %}
@@ -35,4 +36,22 @@
     </table>
   </div>
 </div>
+
+{% include "modal.html" %}
 {% endblock contenido %}
+
+{% block js %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".btneliminar").on("click", function(){
+      $('#myModal').modal('toggle')
+      $(".modal-body").load("/clientes/eliminar/"+this.id)
+    })
+
+    $("#btnagregar").on("click", function(){
+      $('#myModal').modal('toggle')
+      $(".modal-body").load("/clientes/agregar/")
+    })
+  })
+</script>
+{% endblock js %}
